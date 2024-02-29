@@ -13,5 +13,17 @@ namespace Kreta.Backend.Context
         public KretaContext(DbContextOptions options) : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {               
+            modelBuilder.Entity<EducationLevel>()
+                .HasMany(el => el.Students)
+                .WithOne(s => s.EducationLevel)
+                .HasForeignKey(s => s.EducationLevelId);
+
+            modelBuilder.Seed();
+
+
+        }
     }
 }

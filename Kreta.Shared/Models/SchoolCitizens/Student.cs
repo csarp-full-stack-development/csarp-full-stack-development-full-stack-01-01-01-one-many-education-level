@@ -31,6 +31,7 @@
 
         public Guid Id { get; set; }
         public Guid EducationLevelId { get; set; }
+        public EducationLevel EducationLevel { get; set; } = new ();
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDay { get; set; }
