@@ -22,6 +22,8 @@
         public bool OptionalExaminationSubject { get; set; }
         public bool CompulsoryExaminationSubject { get; set; }
 
+        public bool HasId => Id != Guid.Empty;
+
         public override string ToString()
         {
             return $"{SubjectName}";

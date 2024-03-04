@@ -1,5 +1,4 @@
 ﻿using Kreta.Shared.Models.SchoolCitizens;
-using Kreta.Shared.Parameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Kreta.Backend.Repos
@@ -9,6 +8,11 @@ namespace Kreta.Backend.Repos
     {
         public StudentRepo(IDbContextFactory<TDbContext> dbContextFactory) : base(dbContextFactory)
         {
+        }
+
+        public IQueryable<Student> SelectAllIncluded()
+        {
+            return FindAll().Include(student => student.EducationLevel);
         }
     }
 }

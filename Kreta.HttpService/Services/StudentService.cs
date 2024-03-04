@@ -1,6 +1,8 @@
 ﻿using Kreta.Shared.Assamblers;
 using Kreta.Shared.Dtos;
 using Kreta.Shared.Models.SchoolCitizens;
+using System.Diagnostics;
+using System.Net.Http.Json;
 
 namespace Kreta.HttpService.Services
 {
@@ -8,6 +10,27 @@ namespace Kreta.HttpService.Services
     {
         public StudentService(IHttpClientFactory? httpClientFactory, StudentAssambler studentAssambler) : base(httpClientFactory, studentAssambler)
         {
-        }      
+        }
+
+        public async Task<List<Student>> SelectAllIncludedAsync()
+        {
+            if (_httpClient is not null)
+            {
+                try
+                {
+                    List<StudentDto>? resultDto = await _httpClient.GetFromJsonAsync<List<StudentDto>>($"api/Student/included");
+                    if (resultDto is not null)
+                    {
+                        List<Student> result = resultDto.Select(entity => _assambler.ToModel(entity)).ToList();
+                        return result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            return new List<Student>();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace Kreta.Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> SelectAllAsync()
+        public virtual async Task<IActionResult> SelectAllAsync()
         {
             List<Tmodel>? entities = new();
 

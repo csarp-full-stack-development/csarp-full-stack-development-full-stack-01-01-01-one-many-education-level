@@ -15,14 +15,12 @@ namespace Kreta.Backend.Context
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {               
+        {
             modelBuilder.Entity<EducationLevel>()
                 .HasMany(el => el.Students)
                 .WithOne(s => s.EducationLevel)
-                .HasForeignKey(s => s.EducationLevelId);
-
-            modelBuilder.Seed();
-
+                .HasForeignKey(s => s.EducationLevelId)
+                .IsRequired(false);
 
         }
     }

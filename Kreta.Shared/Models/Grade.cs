@@ -25,6 +25,7 @@
         public string GradeText { get; set; }
         public DateTime TimeOfGrade { get; set; }
         public string TypeOfGrade { get; set; }
+        public bool HasId => Id != Guid.Empty;
 
         public override string ToString()
         {

@@ -12,8 +12,8 @@ namespace Kreta.HttpService.Services
         where TEntity : class, IDbEntity<TEntity>, new()
         where TEntityDto : class, new()
     {
-        private readonly HttpClient? _httpClient;
-        private Assambler<TEntity, TEntityDto> _assambler;
+        protected readonly HttpClient? _httpClient;
+        protected Assambler<TEntity, TEntityDto> _assambler;
 
         public BaseService(IHttpClientFactory? httpClientFactory, Assambler<TEntity, TEntityDto> assambler)
         {

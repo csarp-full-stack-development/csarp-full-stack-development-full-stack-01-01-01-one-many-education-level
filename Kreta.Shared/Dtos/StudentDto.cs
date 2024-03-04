@@ -1,4 +1,5 @@
-﻿using Kreta.Shared.Models.SchoolCitizens;
+﻿using Kreta.Shared.Models;
+using Kreta.Shared.Models.SchoolCitizens;
 
 namespace Kreta.Shared.Dtos
 {
@@ -12,7 +13,8 @@ namespace Kreta.Shared.Dtos
         public bool IsWoman { get; set; }
         public int SchoolYear { get; set; }
         public SchoolClassType SchoolClass { get; set; }
-        public Guid EducationLevel { get; set; } = Guid.Empty;
+        public Guid EducationLevelId { get; set; } = Guid.Empty;
+        public EducationLevel? EducationLevel { get; set; }
 
     }
 }
