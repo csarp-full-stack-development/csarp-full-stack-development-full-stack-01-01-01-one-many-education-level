@@ -21,16 +21,8 @@ namespace Kreta.Desktop.ViewModels.Administration
         [ObservableProperty]
         private ObservableCollection<EducationLevel> _educationLevels = new();
 
+        [ObservableProperty]
         private EducationLevel _selectedEducationLevel;
-        public EducationLevel SelectedEducationLevel
-        {
-            get => _selectedEducationLevel;
-            set
-            {
-                SetProperty(ref _selectedEducationLevel, value);
-                GetStudentsByEducationLevelId();
-            }
-        }
 
         [ObservableProperty]
         private ObservableCollection<Student> _EducationLevelsStudents = new();
