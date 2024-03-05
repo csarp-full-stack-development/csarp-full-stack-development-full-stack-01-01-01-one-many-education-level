@@ -22,17 +22,17 @@ namespace Kreta.Backend.Controllers
         [HttpGet("included")]
         public async Task<IActionResult> SelectAllIncludedAsync()
         {
-            List<Student>? entities = new();
-
+            List<Student>? students = new();
             if (_repo != null)
             {
                 try
                 {
-                    entities = await _repo.SelectAllIncluded().ToListAsync();
-                    return Ok(entities.Select(entity => _assambler.ToDto(entity)));
+                    students = await _repo.SelectAllIncluded().ToListAsync();
+                    return Ok(students.Select(entity => _assambler.ToDto(entity)));
                 }
                 catch (Exception ex)
                 {
+                    await Console.Out.WriteLineAsync(ex.Message);
                 }
             }
             return BadRequest("Az adatok elérhetetlenek!");

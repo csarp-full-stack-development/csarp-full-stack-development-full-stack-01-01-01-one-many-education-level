@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Kreta.Desktop.ViewModels.Base;
+using System.Threading.Tasks;
 
 namespace Kreta.Desktop.ViewModels.Administration
 {
@@ -24,10 +25,10 @@ namespace Kreta.Desktop.ViewModels.Administration
         }
 
         [RelayCommand]
-        private void ShowEducationLevel()
+        private async Task ShowEducationLevel()
         {
             CurrentAdministrationChildView = _educationLevelViewModel;
-            _educationLevelViewModel.InitializeAsync();
+            await _educationLevelViewModel.InitializeAsync();
         }
     }
 }
