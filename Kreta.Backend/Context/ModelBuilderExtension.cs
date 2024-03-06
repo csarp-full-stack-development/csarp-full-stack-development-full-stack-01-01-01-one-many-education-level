@@ -86,7 +86,7 @@ namespace Kreta.Backend.Context
                     PlaceOfBirth="Apátfalva",
                     SchoolYear=13,
                     SchoolClass = SchoolClassType.ClassB,
-                    EducationLevelId=EducatuionLevelId2,
+                    EducationLevelId=Guid.Empty
                 }
             };
             List<Teacher> teachers = new()
