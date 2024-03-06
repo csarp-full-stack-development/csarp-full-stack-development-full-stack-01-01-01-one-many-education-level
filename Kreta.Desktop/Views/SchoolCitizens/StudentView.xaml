@@ -85,10 +85,9 @@
         </StackPanel>
         <ComboBox Grid.Row="9" Grid.Column="1" Margin="2 4 2 4"
                   ItemsSource="{Binding EducationLevels}"
-                  SelectedValue="{Binding SelectedStudent.EducationLevelId, Mode=TwoWay}"
+                  SelectedValue="{Binding SelectedStudent.EducationLevelId}"
                   SelectedValuePath="Id"
-                  DisplayMemberPath="StudentEducationLevel"
-                  
+                  DisplayMemberPath="StudentEducationLevel"                
          >
         </ComboBox>
         <ListBox Grid.Row="12"

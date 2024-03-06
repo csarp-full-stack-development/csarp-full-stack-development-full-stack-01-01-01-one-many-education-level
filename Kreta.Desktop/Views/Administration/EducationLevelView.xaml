@@ -20,8 +20,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="300"></ColumnDefinition>
-            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -29,7 +29,10 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="{Binding Title}"></Label>
         <Label Grid.Row="2" Grid.Column="0">Tanulmányi szint neve:</Label>
@@ -71,10 +74,20 @@
             </Behaviors:Interaction.Triggers>
 
         </ListBox>
+        <Label Grid.Row="4" Grid.Column="3" VerticalAlignment="Bottom">A tanulmányi szinthez tartozó diákok:</Label>
         <ListBox Grid.Row="5"
                  Grid.Column="3"
+                 Margin="10 2 10 10"
                  ItemsSource="{Binding EducationLevelsStudents}">
         </ListBox>
-
+        <StackPanel Grid.Row="6" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button FontFamily="Segoe UI Symbol" MinWidth="40" Content="&#xE1FD;"/>
+            <Button FontFamily="Segoe UI Symbol" MinWidth="40" Content="&#xE110;"/>
+        </StackPanel>
+        <Label Grid.Row="7" Grid.Column="3" VerticalAlignment="Bottom">A tanulmányi szinttel nem rendelkező diákok:</Label>
+        <ListBox Grid.Row="8" Grid.Column="3"
+                 Margin="10 2 10 10">
+            
+        </ListBox>
     </Grid>
 </UserControl>
