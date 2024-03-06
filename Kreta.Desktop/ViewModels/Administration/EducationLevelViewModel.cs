@@ -8,6 +8,7 @@ using Kreta.Shared.Responses;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Kreta.Desktop.ViewModels.Administration
@@ -27,9 +28,15 @@ namespace Kreta.Desktop.ViewModels.Administration
 
         [ObservableProperty]
         private ObservableCollection<Student> _studentWithEducationLevel = new();
+
+        [ObservableProperty]
+        private Student _selectedStudentWithEducationLevel=new();
         
         [ObservableProperty]
         private ObservableCollection<Student> _studentNoEducationLevel = new();
+
+        [ObservableProperty]
+        private Student _selectedStudentWithNoEducationLevel=new();
 
         public EducationLevelViewModel()
         {
@@ -89,11 +96,33 @@ namespace Kreta.Desktop.ViewModels.Administration
         private async Task GetStudentsByEducationLevelId()
         {
             //if (_educationLevelService is not null && SelectedEducationLevel.HasId)
-            if (_studentService is not null && SelectedEducationLevel.HasId)
+            if (_studentService is not null && SelectedEducationLevel is not null &&  SelectedEducationLevel.HasId)
             {
                 //List<Student> studentByEducationLevelId = await _educationLevelService.GetStudentsBy(SelectedEducationLevel.Id);
                 List<Student> studentByEducationLevelId = await _studentService.GetStudentsBy(SelectedEducationLevel.Id);
                 StudentWithEducationLevel = new ObservableCollection<Student>(studentByEducationLevelId);
+            }
+        }
+
+        [RelayCommand]
+        private async Task MoveStudentToNoEducationLevel()
+        {
+            if (SelectedStudentWithEducationLevel != null && _studentService is not null)
+            {
+                SelectedStudentWithEducationLevel.EducationLevelId = Guid.Empty;                
+                await _studentService.UpdateAsync(SelectedStudentWithEducationLevel);
+                await UpdateView();
+            }
+        }
+
+        [RelayCommand]
+        private async Task MoveStudentToSelectedEducationLevel()
+        {
+            if (SelectedEducationLevel is not null && _studentService is not null)
+            {
+                SelectedStudentWithNoEducationLevel.EducationLevelId = SelectedEducationLevel.Id;
+                await _studentService.UpdateAsync(SelectedStudentWithNoEducationLevel);
+                await UpdateView();
             }
         }
 
@@ -103,6 +132,8 @@ namespace Kreta.Desktop.ViewModels.Administration
             {
                 List<EducationLevel> educationLevels = await _educationLevelService.SelectAllAsync();
                 EducationLevels = new ObservableCollection<EducationLevel>(educationLevels);
+                // Jobb lenne nem az első hanem az előző
+                SelectedEducationLevel = educationLevels.FirstOrDefault() ?? new EducationLevel();
             }
             if (_studentService is not null)
             {
