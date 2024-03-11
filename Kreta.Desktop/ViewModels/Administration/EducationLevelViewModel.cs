@@ -15,11 +15,9 @@ namespace Kreta.Desktop.ViewModels.Administration
 {
     public partial class EducationLevelViewModel : BaseViewModel
     {
-        public string Title { get; set; } = "Tanulmányi szint kezelése";
-
         private readonly IEducationLevelService? _educationLevelService;
         private readonly IStudentService? _studentService;
-
+        
         [ObservableProperty]
         private ObservableCollection<EducationLevel> _educationLevels = new();
 
@@ -37,6 +35,8 @@ namespace Kreta.Desktop.ViewModels.Administration
 
         [ObservableProperty]
         private Student _selectedStudentWithNoEducationLevel=new();
+
+        public string Title { get; set; } = "Tanulmányi szint kezelése";
 
         public EducationLevelViewModel()
         {

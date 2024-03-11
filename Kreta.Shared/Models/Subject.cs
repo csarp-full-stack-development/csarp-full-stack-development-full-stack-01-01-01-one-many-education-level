@@ -18,6 +18,7 @@
         }
 
         public Guid Id { get; set; }
+        public Guid? SubjectTypeId { get; set; }
         public string SubjectName { get; set; }
         public bool OptionalExaminationSubject { get; set; }
         public bool CompulsoryExaminationSubject { get; set; }
