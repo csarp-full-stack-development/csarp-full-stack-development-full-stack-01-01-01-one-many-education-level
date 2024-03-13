@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xwpftk="http://schemas.xceed.com/wpf/xaml/toolkit" 
-             xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:Kreta.Desktop.Views.Administration"
              xmlns:viewmodel="clr-namespace:Kreta.Desktop.ViewModels.Administration"
              d:DataContext="{d:DesignInstance Type=viewmodel:EducationLevelViewModel, IsDesignTimeCreatable=True}"
@@ -67,11 +67,11 @@
             Margin="10 2 10 10"
             ItemsSource="{Binding EducationLevels}"
             SelectedItem="{Binding SelectedEducationLevel}">
-            <Behaviors:Interaction.Triggers>
-                <Behaviors:EventTrigger EventName="SelectionChanged">
-                    <Behaviors:InvokeCommandAction Command="{Binding GetStudentsByEducationLevelIdCommand}" />
-                </Behaviors:EventTrigger>
-            </Behaviors:Interaction.Triggers>
+            <behaviors:Interaction.Triggers>
+                <behaviors:EventTrigger EventName="SelectionChanged">
+                    <behaviors:InvokeCommandAction Command="{Binding GetStudentsByEducationLevelIdCommand}" />
+                </behaviors:EventTrigger>
+            </behaviors:Interaction.Triggers>
 
         </ListBox>
         <Label Grid.Row="4" Grid.Column="3" VerticalAlignment="Bottom">A tanulmányi szinthez tartozó diákok:</Label>
